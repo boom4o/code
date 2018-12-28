@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Test</title>
+    <link rel="stylesheet" type="text/css" href="TEST.css"/>
+    <script> 
+    
+    function valid(form){
+    
+	    var name = document.getElementById("name");
+        var lastName = document.getElementById("lastName");
+        var birthday = document.getElementById("birthday");
+        var password = document.getElementById("password");
+        var address = document.getElementById("address");
+        var email = document.getElementById("email");
+        
+        var nameError = document.getElementById("nameError");
+        var lastNameError = document.getElementById("lastNameError");
+        var birthdayError = document.getElementById("birthdayError");
+        var passwordError = document.getElementById("passwordError");
+        var addressError = document.getElementById("addressError");
+        var emailError = document.getElementById("emailError");
+        var emailPattern = /(^\S+@\S+$)/i ;
+        
+     
+	   if(!name.value){
+            name.style.border ="2px solid red";
+            nameError.style.color = "red";
+            nameError.textContent = "This field is required";
+            return false;
+        }
+        if (!lastName.value){
+            lastName.style.border ="2px solid red";
+            lastNameError.style.color = "red";
+            lastNameError.textContent = "This field is required";
+        return false;
+	   }
+        if (!birthday.value){
+            birthday.style.border ="2px solid red";
+            birthdayError.style.color = "red";
+            birthdayError.textContent = "This field is required";
+        return false;
+        }
+        
+        if(!email.value){
+            email.style.border ="2px solid red";
+            emailError.style.color = "red";
+            emailError.textContent = "This field is required";
+            return false;
+        }
+     else if  (!emailPattern.test(email)==false){
+            emailError.style.color = "red";
+            emailError.textContent = "You entered a wrong email!";
+            return false;
+     }
+        if (!password.value){
+            password.style.border ="2px solid red";
+            passwordError.style.color = "red";
+            passwordError.textContent = "This field is required";
+        return false;
+        }
+        if (!address.value){
+            address.style.border ="2px solid red";
+            addressError.style.color = "red";
+            addressError.textContent = "This field is required";
+        return false;
+        }
+
+        alert("Validation passed");
+    }
+        
+    </script>
+</head>
+
+<body>
+    <form action="" id="form" ();>
+       <div>
+	   <label for="name">First name:</label>
+       <input type="text" name="name" id="name" placeholder="Your name" required/><div id="nameError"></div>
+	   </div><br/>
+	    <div>
+       <label for="lastName">Last name:</label>
+       <input type="text" name="lastName" id="lastName" placeholder="LastName" required/><div id="lastNameError"></div>
+	   </div><br/>
+	   <div>
+       <label for="birthday">Birthday:</label>
+       <input type="date" name="birthday" id="birthday" required/><div id="birthdayError"></div>
+	   </div><br/>
+	    <div>
+       <span>Gender:</span>
+       <input type="radio" name="gender" id="man" required/><label for="man">Man</label>
+       <input type="radio" name="gender" id="woman"/><label for="woman">Woman</label><div id="genderError"></div>
+	   </div><br/>
+	    <div>
+        <label>Choose the country:</label>
+       <select name="coutry" required>
+       <option disabled="disable" selected="selected">Your country</option>
+       <option>Ukraine</option>
+       <option>France</option>
+       <option>Germany</option>
+       <option>Italy</option>
+       <option>Egypt</option>
+       <option>Zimbabwe</option>
+        </select><div id="selectError"></div>
+		</div><br/>
+		 <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Email" required pattern="^\S+@\S+$"/><div id="emailError"></div>
+        </div><br/>
+		 <div>
+        <label for="password">Password:</label>
+        <input type="password" name="password" placeholder="password" id="password" required/><div id="passwordError"></div>
+        </div><br/>
+		 <div>
+            <label for="address">Address:</label>
+        <input type="text" name="address" placeholder="address" id="address" required/><div id="addressError"></div>
+        </div><br/>
+		 <div>
+        <textarea rows="10" cols="30" name="notes" id="notes" placeholder="Your notes..."></textarea> 
+        <input type="submit" value="submit" onclick="valid(this.form)"/>
+		</div>
+    </form>
+</body>
+</html>
+ 
